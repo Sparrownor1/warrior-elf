@@ -22,7 +22,6 @@ def chooseCharacter():
                 break
             except ValueError:
                 print("Please try again")
-        raceNo = int(input())
         if raceNo >= 1 and raceNo <= 3:
             break
         else:
