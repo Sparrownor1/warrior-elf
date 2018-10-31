@@ -1,5 +1,7 @@
 from random import randint
+import time
 #Change: Positions not printed
+#Changed inputs to sleep
 
 class Player:
 
@@ -58,8 +60,8 @@ class Player:
 
     def printDistance(self, enemy):
         print("You are", abs(self.getPosition() - enemy.getPosition()),
-        "blocks away from your enemy")
-        input()
+        "blocks away from your enemy\n")
+        time.sleep(2)
 
     def printControls(self):
 
@@ -309,7 +311,7 @@ class Monster:
             print("Enemy attack succesful: Your health is now", enemy.getHealth(), "\n")
         else:
             print("Enemy Attack: You were out of the enemy's range. No damage taken. \n")
-        input()
+        time.sleep(2)
 
     def takeDamage(self, damage):
         self._hp -= damage
@@ -322,7 +324,7 @@ class Monster:
         else:
             #Enemy has moved
             print("Enemy movement:The enemy has moved and is now at a position of", self.getPosition())
-        input()
+        time.sleep(2)
 
     def getPosition(self):
         return self._position
@@ -350,16 +352,16 @@ class Monster:
             "with a range of", self.getRange(), "\n"
             # "They are at a position of", self.getPosition()
             )
-        input()
+        time.sleep(2)
 
     def printDistance(self, enemy):
         print("They are", abs(self.getPosition() - enemy.getPosition()),
         "blocks away from you")
-        input()
+        time.sleep(2)
 
     def turn(self, enemy):
         print("\nIt is the computer's turn. \n")
-        input()
+        time.sleep(2)
         self.printStats()
         self.printDistance(enemy)
         self.move(randint(0,self.getSpeed()))
