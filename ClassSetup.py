@@ -1,4 +1,5 @@
 from random import randint
+#Change: Positions not printed
 
 class Player:
 
@@ -15,7 +16,7 @@ class Player:
         self.hasCast = False
 
     def basicAttack(self, target):
-
+        #Checks if target is in range
         if abs(self.getPosition() - target.getPosition()) <= self.myClass.basic.getRange():
             target.takeDamage(self.myClass.basic.getDamage())
             print("Attack successful: Enemy is now at a health of", target.getHealth(), "\n")
@@ -28,7 +29,7 @@ class Player:
 
         if distance <= self.getSpeed():
             self._position += distance
-            print("You are now at a position of", self.getPosition(), "\n")
+            # print("You are now at a position of", self.getPosition(), "\n")
             self.moved()
         else:
             print("This movement is out of range. Try again \n")
@@ -51,7 +52,7 @@ class Player:
             "You have", self.getMana(), "mana available \n"
             "Your basic attack damage is", self.myClass.basic.getDamage(),
             "with a range of", self.myClass.basic.getRange(), "\n"
-            "You are at position of", self.getPosition(), "\n"
+            # "You are at position of", self.getPosition(), "\n"
             "You can move", self.getSpeed(), "blocks", "\n"
             )
 
@@ -236,6 +237,7 @@ class TankUp(Spell):
 
     def cast(self, player, enemy):
         player.buffHealth(10)
+        print("Your health increased by 10.")
 
 class PyroBlast(Spell):
 
@@ -244,6 +246,7 @@ class PyroBlast(Spell):
 
     def cast(self, player, enemy):
         enemy.takeDamage(6)
+        print("You dealt 6 damage.")
 
 class Teleport(Spell):
 
@@ -252,12 +255,13 @@ class Teleport(Spell):
 
     def cast(self, player, enemy):
         while True:
-            position = int(input("What position would you like to Teleport to?"))
+            position = int(input("What position would you like to Teleport to? \n"))
             if type(position) == int:
                 break
             else:
                 print("You must enter an integer")
         player.setPosition(position)
+        print("You teleported to position", position)
 
 
 
@@ -312,7 +316,12 @@ class Monster:
 
     def move(self, distance):
         self._position -= distance
-        print("Enemy movement:The enemy has moved and is now at a position of", self.getPosition())
+        if distance == 0:
+            #no move
+            print("Enemy movement: The enemy did not move")
+        else:
+            #Enemy has moved
+            print("Enemy movement:The enemy has moved and is now at a position of", self.getPosition())
         input()
 
     def getPosition(self):
@@ -339,7 +348,7 @@ class Monster:
             # "They are a", self._race, "\n"
             "Their basic attack damage is", self.getDamage(),
             "with a range of", self.getRange(), "\n"
-            "They are at a position of", self.getPosition()
+            # "They are at a position of", self.getPosition()
             )
         input()
 
