@@ -5,12 +5,12 @@ select = chooseCharacter()
 
 player = setupCharacter(select[0], select[1])
 player.printStats()
-monster = monsterList[randint(0,2)]
+monster = chooseMonster()
 print("You are fighting a", monster._race + "!")
-input()
+time.sleep(2)
 monster.printStats()
 print("LET THE BATTLE BEGIN! \n")
-input()
+time.sleep(2)
 
 while True:
     player.turn(player, monster)

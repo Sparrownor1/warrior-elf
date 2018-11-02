@@ -3,7 +3,7 @@ from ClassSetup import *
 
 raceList = [None, Elf(), Human(), Dwarf()]
 classList = [None, Warrior(), Mage(), Hunter()]
-monsterList = [Orc(), Kodo(), Dragon()]
+monsterList = [None, Orc(), Kodo(), Dragon()]
 
 def chooseCharacter():
 #add spell details
@@ -65,3 +65,30 @@ def checkGameOver(player, enemy):
         return True
     else:
         return False
+
+def chooseMonster():
+    print("Press 1 to choose a monster \n"
+    "Press 2 to fight a random monster\n")
+    decision = 0
+    while decision not in [1,2]:
+        try:
+            decision = int(input())
+        except ValueError:
+            print("Invalid Input. Try again: ")
+    if decision == 2:
+        monster = monsterList[randint(1,3)]
+    elif decision == 1:
+        print(
+        """Choose a monster:
+1: Orc
+2: Kodo
+3: Dragon """)
+        decision2 = 0
+        while decision2 not in [1,2,3]:
+            try:
+                decision2 = int(input())
+            except ValueError:
+                print("Invalid Input. Try again: ")
+        monster = monsterList[decision2]
+
+    return monster
